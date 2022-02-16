@@ -15,9 +15,10 @@ soup = BeautifulSoup(response.text, "html.parser")
 
 user_input = str(input("What keyword would you like to search the New York Times by?\n").strip())
 raw = (soup.find_all("p"))
+
 for n in raw:
     text = n.getText()
-    if user_input in text:
+    if user_input in text or user_input in text.lower():
         print(text)
     else:
         continue
