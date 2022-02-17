@@ -8,12 +8,17 @@ print(response)
 
 soup = BeautifulSoup(response.text, "html.parser")
 
-# raw = (soup.find_all(class_="css-5n6ag4"))
-# for n in raw:
-#     print(n)
-# #
+title = (soup.find(name="h3", class_="ee0hn7b0"))
+head = (soup.find_all(name="li", class_="summary-class"))
 
-user_input = str(input("What keyword would you like to search the New York Times by?\n").strip())
+title_text = (title.getText())
+print("\n**  " + title_text + "  **\n")
+for n in head:
+    text = n.getText()
+    print(text)
+
+
+user_input = str(input("\nWhat keyword would you like to search the New York Times by?\n").strip())
 raw = (soup.find_all("p"))
 
 for n in raw:
@@ -22,4 +27,4 @@ for n in raw:
         print(text)
     else:
         continue
-    print("NYT")
+    print("per the New York Times")
